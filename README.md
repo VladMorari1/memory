@@ -2,7 +2,20 @@
 
 This App represents a memory card game where players need to match pairs of cards with identical images. 
 
-# The functionality:
+##  Components:
+* MainMenu component serves as the main interface for users to interact with the game. It manages the game's status, user information, and game progression. Here's an overview of the key features and functionalities:
+* StartGame Component: Displays the start game button and facilitates user interactions for creating a new user or selecting an existing user.
+* PlayingGame Component: Manages the gameplay logic and updates the number of moves and matches found.
+* GameResult Component: Renders the game result based on the outcome of the game, either "win" or "lose."
+
+### <font color="#d5abed">[ MainMenu ]</font><br>
+  
+  * Game Status Management: Tracks the current status of the game, including "menu," "playing," "win," and "lose" states.
+  * User Interaction: Allows users to start the game, create a new user, select an existing user, and view game results.
+  * Game Progression: Monitors the number of moves made by the user, matches found, and displays relevant information during gameplay.
+  * Modal Component: Utilizes a modal component to facilitate user interactions such as creating a new user or selecting an existing user.
+  * Restart Game: Enables users to restart the game after completing a round or losing.
+### <font color="#d5abed">[ PlayingGame ]</font><br>
 
 * Data Fetching using React Query:
 
