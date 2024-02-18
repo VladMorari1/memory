@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# Memory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This App represents a memory card game where players need to match pairs of cards with identical images. 
 
-## Available Scripts
+# The functionality:
 
-In the project directory, you can run:
+* Data Fetching using React Query:
 
-### `npm start`
+    It fetches data from the Cats API using the useQuery hook from React Query. The fetched data represents images of cats, which are used as content for the cards in the game.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* State Management:
+    * <font color="#fcba03">[cards]</font>: This state holds the array of card objects fetched from the API. Each card object typically contains an ID and a URL to an image.
+    * <font color="#fcba03">[shouldDisableAllCards]</font>: This state determines whether all cards should be disabled (i.e., not clickable). It's used to prevent interaction with cards during certain game states, such as when two cards are already flipped.
+    * <font color="#fcba03">[clearedCards]</font>: This state keeps track of cards that have been successfully matched and cleared from the game board.
+  * <font color="#fcba03">[openCards]</font>: This state holds the indices of the currently open (flipped) cards on the game board.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Effect Hook:
 
-### `npm run build`
+    It sets up an effect that triggers whenever openCards state changes. This effect is responsible for evaluating whether the two flipped cards match and handling the game logic accordingly.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Event Handlers:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  * <font color="#fcba03">handleCardClick</font>: This function handles the click event on a card. It manages the state of openCards and determines whether to disable further card clicks based on the number of open cards.
+  
 
-### `npm run eject`
+* Game Logic:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    * <font color="#fcba03">evaluate</font>: This function evaluates whether the two flipped cards match. If they match, it marks them as cleared and updates the clearedCards state. If they don't match, it flips the cards back after a short delay (FLIP_BACK_TIME).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  
+* Rendering:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+In App we are rendering the GamingTable component, which likely represents the game board/grid.
+Inside the GamingTable, it maps over the cards array and renders a Card component for each card object fetched from the API.
+Each Card component receives props such as card, isDisabled, isInactive, isFlipped, and onClick, which determine its appearance and behavior based on the game state and user interaction.
+Overall, this component manages the game state, handles user interactions, and renders the game board and cards based on the fetched data. It orchestrates the logic of the memory card game.
