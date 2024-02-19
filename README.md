@@ -43,9 +43,48 @@ This App represents a memory card game where players need to match pairs of card
 
     * <font color="#fcba03">evaluate</font>: This function evaluates whether the two flipped cards match. If they match, it marks them as cleared and updates the clearedCards state. If they don't match, it flips the cards back after a short delay (FLIP_BACK_TIME).
 
+### <font color="#d5abed">[ Card ]</font><br>
   
-* Rendering:
+  * Card Flipping Component
+    * This component is designed to create a visually appealing card flipping effect, commonly used in card-based interfaces such as card games or memory games.
 
+### How it Works
+The card flipping effect is achieved using React components and styled-components for styling. Here's an overview of the key components and their roles:
+
+1. Card Component (Card.tsx):
+
+Represents a single card in the game.
+Receives props such as (isFlipped, isInactive, isDisabled, etc.), which determine the state and behavior of the card.
+When the card is clicked, it calls the onClick callback function passed as a prop, but only if the card is not already flipped and not disabled.
+Styled Components:
+
+2. CardST:
+
+Represents the card container. Applies styles such as width, height, border-radius, box-shadow, transition, and transform.
+
+3. CardFace: 
+
+Represents the front and back faces of the card. Uses absolute positioning to stack the front and back faces.
+
+4. CardImg: 
+
+Represents the image displayed on the card. Ensures that the image occupies the entire space of the card face.
+
+#### [Card Flipping Principle]
+The card flipping effect is implemented using CSS transitions and transforms, specifically the rotateY transform property, to rotate the card around the y-axis.
+
+The CardST component transitions smoothly between the flipped and unflipped states (transition: 0.3s).
+
+When the isFlipped prop is true, the card rotates around the y-axis by 180 degrees to reveal the front face (transform: rotateY(180deg)).
+
+The back face of the card is hidden during rotation (backface-visibility: hidden) to ensure that only one face of the card is visible at a time.
+
+Front and Back Faces:
+The back face of the card (<CardFace>) contains an image representing the back design of the card.
+
+The front face of the card (<CardFace className="card-front-face">) contains an image representing the front design of the card. It's rotated 180 degrees to make it the front face when the card is flipped.
+
+##
 In App we are rendering the GamingTable component, which likely represents the game board/grid.
 Inside the GamingTable, it maps over the cards array and renders a Card component for each card object fetched from the API.
 Each Card component receives props such as card, isDisabled, isInactive, isFlipped, and onClick, which determine its appearance and behavior based on the game state and user interaction.
