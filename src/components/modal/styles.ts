@@ -22,6 +22,9 @@ export const ModalContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const CloseButton = styled.button`

@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export const StartGameBlock = styled.div`
   padding: 12px;
+  width: 90%;
 `;
 
 export const Label = styled.div`
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 16px;
-  width: 600px;
   text-align: center;
+  width: 90%;
 `;
 
 export const UserListWrapper = styled.div`
@@ -43,13 +44,16 @@ export const User = styled.div`
 export const InputWrapper = styled.div`
   display: flex;
   gap: 4px;
+  width: 60%;
+  margin: auto;
+  justify-content: center;
 `;
 export const Input = styled.input`
   border: 1px solid #858585;
-  width: 100%;
   height: 30px;
   border-radius: 4px;
   padding: 4px;
+  width: 50%;
 `;
 
 export const StartGameButton = styled.button`
